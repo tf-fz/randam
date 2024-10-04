@@ -42,12 +42,37 @@
 	}
 </style>
 <script type="text/javascript">
+let select = document.querySelector('[name="player"]');
+function viewChange(){
+	if (document.getElementById('player')){
+          if (select.value == 'オンゲキ'){
+		  a = 1;
+          }else if (select.value == 'チュウニズム'){
+		  a = 2;
+          }else if (select.value == 'maimai'){
+		  a = 3;
+          }
+        }
 function randa() {
 	rand = Math.floor(Math.random()*5);
-	if(rand < 3){
-		result = "リコレ";
-	}else if(rand < 5){
-		result = "ゴミ";
+	if(a == 1){
+		if(rand < 3){
+			result = "リコレ";
+		}else if(rand < 5){
+			result = "ゴミ";
+		}
+	}if(a == 2){
+		if(rand < 3){
+			result = "祈";
+		}else if(rand < 5){
+			result = "メタバ";
+		}
+	}if(a == 3){
+		if(rand < 3){
+			result = "系ぎて";
+		}else if(rand < 5){
+			result = "パラ白";
+		}
 	}
 	document.write(result);
 }

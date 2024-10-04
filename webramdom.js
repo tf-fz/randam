@@ -3,6 +3,7 @@ function buttonClick() {
 	document.write(select);
 	document.write(game);
 	document.write(conmax);
+	console.log(conmax);
 }
 let button = document.getElementById('btn');
 button.onclick = buttonClick;

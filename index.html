@@ -44,7 +44,13 @@
 <script type="text/javascript">
 
 function randa() {
-	document.write("あ。");
+	rand = Math.floor(Math.random()*2)
+	if(rand = 0){
+		result = "リコレ";
+	}if(rand = 1){
+		result = "ゴミ"
+	}
+	document.write(rand);
 }
 	
 function random() {

@@ -53,6 +53,8 @@ function viewChange(){
 		  a = 3;
           }
         }
+	window.onload = viewChange;
+}
 function randa() {
 	rand = Math.floor(Math.random()*5);
 	if(a == 1){
@@ -132,7 +134,7 @@ function random() {
 
    <center>
 	   <div class="main">
-		   <select class= "banedselect" id="player" name="player" onchange="viewChange();"><br>
+		   <select class= "banedselect" id="player" name="player" onchange="viewChange()">
           <option value="オンゲキ">オンゲキ</option>
           <option value="チュウニズム">チュウニズム</option>
           <option value="maimai">maimai</option>

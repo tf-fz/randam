@@ -42,20 +42,18 @@
 	}
 </style>
 <script type="text/javascript">
-let select = document.querySelector('[name="player"]');
-function viewChange(){
-	if (document.getElementById('player')){
-          if (select.value == 'オンゲキ'){
+let select = document.getElementById('player1');
+select.onchange = function(){
+	if (this.value == 'オンゲキ'){
 		  a = 1;
-          }else if (select.value == 'チュウニズム'){
+          }else if (this.value == 'チュウニズム'){
 		  a = 2;
-          }else if (select.value == 'maimai'){
+          }else if (this.value == 'maimai'){
 		  a = 3;
           }
-        }
-	window.onload = viewChange;
 }
 function randa() {
+	
 	rand = Math.floor(Math.random()*5);
 	if(a == 1){
 		if(rand < 3){
@@ -134,7 +132,7 @@ function random() {
 
    <center>
 	   <div class="main">
-		   <select class= "banedselect" id="player" name="player" onchange="viewChange()">
+		   <select class= "banedselect" id="player" name="player1" >
           <option value="オンゲキ">オンゲキ</option>
           <option value="チュウニズム">チュウニズム</option>
           <option value="maimai">maimai</option>

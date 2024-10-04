@@ -1,13 +1,12 @@
 window.onload = viewChange;
-let select = document.querySelector('[name="list"]');
-let conmax = document.getElementById('conmax');
+let select 
+let conmax 
 function buttonClick() {
 	select = document.querySelector('[name="list"]');
-	conmax = document.getElementById('conmax');
+	conmax1 = document.getElementById('conmax');
 	document.getElementById(sm[0]).style.display = "none";
         if (document.getElementById('list')){
         id = document.getElementById('list').value;
-        sm = [];
         if (select.value == 'オンゲキ'){
 		game = 'オンゲキ';
 		sm.push("f1");
@@ -20,16 +19,13 @@ function buttonClick() {
         }
 		document.write(select);
 	document.write(game);
-	document.write(conmax);
-	console.log(conmax);
+	document.write(conmax1);
+	console.log(conmax1);
 }
 let button = document.getElementById('btn');
 button.onclick = buttonClick;
 
-let select = document.querySelector('[name="list"]');
-let conmax = document.getElementById('conmax');
-let sm =["f0"];
-let game ;
+
 function viewChange(){
 	document.getElementById(sm[0]).style.display = "none";
         if (document.getElementById('list')){

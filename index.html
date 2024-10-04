@@ -42,12 +42,11 @@
 	}
 </style>
 <script type="text/javascript">
-let rand = 0
 function randa() {
-	rand = Math.floor(Math.random()*2);
-	if(rand = 0){
+	rand = Math.floor(Math.random()*5);
+	if(rand < 3){
 		result = "リコレ";
-	};if(rand = 1){
+	};if(rand < 5){
 		result = "ゴミ";
 	}
 	document.write(result);

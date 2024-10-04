@@ -1,3 +1,18 @@
+let select = document.querySelector('[name="list"]');
+      let sm =["f0"];
+      function viewChange(){
+        document.getElementById(sm[0]).style.display = "none";
+        if (document.getElementById('list')){
+          id = document.getElementById('list').value;
+          sm = [];
+          if (select.value == '選択してね'){
+            sm.push("f1");
+          }else if (select.value == 'ria_zew'){
+            sm.push("ub1");
+          }else if (select.value == 'cn_tmf'){
+            sm.push("ua1");
+          }
+
 //空の配列を作成	
 let game = interaction.options.getString('機種');
 		let difmin = interaction.options.getNumber('定数最小値');

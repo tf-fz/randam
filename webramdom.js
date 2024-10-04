@@ -1,6 +1,24 @@
 window.onload = viewChange;
+let select = document.querySelector('[name="list"]');
+let conmax = document.getElementById('conmax');
 function buttonClick() {
-	document.write(select);
+	select = document.querySelector('[name="list"]');
+	conmax = document.getElementById('conmax');
+	document.getElementById(sm[0]).style.display = "none";
+        if (document.getElementById('list')){
+        id = document.getElementById('list').value;
+        sm = [];
+        if (select.value == 'オンゲキ'){
+		game = 'オンゲキ';
+		sm.push("f1");
+        }else if (select.value == 'チュウニズム'){
+		game = 'チュウニズム';
+        	sm.push("ub1");
+        }else if (select.value == 'maimai'){
+		game = 'maimai';
+		sm.push("ua1");
+        }
+		document.write(select);
 	document.write(game);
 	document.write(conmax);
 	console.log(conmax);

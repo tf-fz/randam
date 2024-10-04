@@ -1,9 +1,11 @@
 window.onload = viewChange;
-function button() {
+function buttonClick() {
 	document.write(select);
 	document.write(game);
 	document.write(conmax);
 }
+let button = document.getElementById('btn');
+button.onclick = buttonClick;
 
 let select = document.querySelector('[name="list"]');
 let conmax = document.getElementById('conmax');

@@ -1,3 +1,9 @@
+document.getElementById("button").onclick = function() {
+	document.write(select);
+	document.write(game);
+	document.write(conmax);
+}
+
 let select = document.querySelector('[name="list"]');
 let conmax = document.getElementById('conmax');
 let sm =["f0"];

@@ -1,152 +1,110 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>ランダム選曲</title>
-<meta name="keywords" content="ランダム選曲">
-<meta name="description" content="セガ音ゲーのランダム選曲">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="index.css">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Script-Type" content="text/javascript"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-  window.onload = viewChange;
-let select 
-let conmax1 
-function buttonClick() {
-	select = document.querySelector('[name="list"]');
-	conmax1 = document.getElementById('conmax');
-	document.getElementById(sm[0]).style.display = "none";
-        if (document.getElementById('list')){
-        id = document.getElementById('list').value;
-        if (select.value == 'オンゲキ'){
-		game = 'オンゲキ';
-		sm.push("f1");
-        }else if (select.value == 'チュウニズム'){
-		game = 'チュウニズム';
-        	sm.push("ub1");
-        }else if (select.value == 'maimai'){
-		game = 'maimai';
-		sm.push("ua1");
-        }
-		document.write(select);
-	document.write(game);
-	document.write(conmax1);
-	console.log(conmax1);
-}
-let button = document.getElementById('btn');
-
-
-function viewChange(){
-	document.getElementById(sm[0]).style.display = "none";
-        if (document.getElementById('list')){
-        id = document.getElementById('list').value;
-        sm = [];
-        if (select.value == 'オンゲキ'){
-		game = 'オンゲキ';
-		sm.push("f1");
-        }else if (select.value == 'チュウニズム'){
-		game = 'チュウニズム';
-        	sm.push("ub1");
-        }else if (select.value == 'maimai'){
-		game = 'maimai';
-		sm.push("ua1");
-        }
-
-//空の配列を作成	
-let game = interaction.options.getString('機種');
-		let difmin = interaction.options.getNumber('定数最小値');
-		let difmax = interaction.options.getNumber('定数最大値');
-
-let song = []
-//別ファイルにある曲名リストをsongに入れる
-song = song.concat(g.song)
-
-
-		//機種の絞り込み
-		let data0 = song.filter( p => p.dev == game)
-		//定数下限の絞り込み
-		let data1 = data0.filter( p => p.con >= difmin)
-		//定数上限の絞り込み
-		let data = data1.filter( q => q.con <= difmax).map(m => m.曲名)
-		let subdata = data1.filter( q => q.con <= difmax).map(m => m.con)
-		let maidata = data1.filter( q => q.con <= difmax).map(m => m.type)
-
-
+    
+    <title>ランダム選曲</title>
+<style media="screen">
+	h1{
+		color: #000;
+		font-size:50px;
+		background:rgba(255,170,170,0.6);
+	}
+	button{
+		font-size: 40px;
+		background-color:#FF1111;
+		font-color: #000;
+		border-bottom: solid 5px gray;
+		border-radius: 25px;
+		padding: 20px 40px;
+	}
+	body{
+  		margin: 0;
+		width: 100vw;
+		height: 100vh;
+		background-image:url("./ハート.jpg");
+		background-size:50px
+	}
+@media screen and (max-width:480px) {
+	h1{
+		width: 80%;
+        font-size: 35px;
 		
-		let rand = Math.floor( Math.random() * data.length);
-		if (game == 'チュウニズム'){
-			await interaction.reply(game+"のランダム選曲は準備中です");
-		}else if (game == 'maimai'){
-			if (difmin == difmax){
-				await interaction.reply("機種：" +game +"\n" +"難易度指定：" +difmin.toFixed(1) +"　譜面定数：" +subdata[rand].toFixed(1) +"\n譜面タイプ：" +maidata[rand] +"\n曲名：" +data[rand]);
-			}else if (difmin < difmax){
-				await interaction.reply("機種：" +game +"\n" +"難易度指定："+difmin.toFixed(1)+"～"+difmax.toFixed(1)+"　譜面定数：" +subdata[rand].toFixed(1) +"\n譜面タイプ：" +maidata[rand] +"\n曲名：" +data[rand]);
-			}else if (difmin > difmax){
-				await interaction.reply("max"+difmax.toFixed(1)+" , min"+difmin.toFixed(1)+" , お前頭グミ");
-		}
-		}else if (difmin > difmax){
-			await interaction.reply("max"+difmax.toFixed(1)+" , min"+difmin.toFixed(1)+" , お前頭グミ");
-		}else if (difmin == difmax){
-			await interaction.reply("機種：" +game +"\n" +"難易度指定：" +difmin.toFixed(1) +"　譜面定数：" +subdata[rand].toFixed(1) +"\n曲名：" +data[rand]);
-		}else if (difmin < difmax){
-			await interaction.reply("機種：" +game +"\n" +"難易度指定："+difmin.toFixed(1)+"～"+difmax.toFixed(1)+"　譜面定数：" +subdata[rand].toFixed(1) +"\n曲名：" +data[rand]);
-		}
-	},
-};
+	}
+	button{
+		width: 50%;
+        font-size: 20px;
+        position: relative;
+        top: 30px;
+	}
+	body{
+  		width: 100%;
+
+	}
+</style>
+<script type="text/javascript">
+
+
+	
+function random() {
+	rand = Math.floor(Math.random()*100);
+	{
+ 		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は0日間メスガキ化！！%0A';
+   	}; if(rand > 4) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は1日間メスガキ化！！%0A';
+        }; if(rand > 6) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は2日間メスガキ化！！%0A';
+        }; if(rand > 8) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は3日間メスガキ化！！%0A';
+        }; if(rand > 10) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は4日間メスガキ化！！%0A';
+      	}; if(rand > 12) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は5日間メスガキ化！';
+      	}; if(rand > 16) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は6日間メスガキ化！';
+      	}; if(rand > 20) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は7日間メスガキ化！';
+      	}; if(rand > 24) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=大当たり！！%0A1人メンションし、その人が3日間メスガキ化する';
+	}; if(rand > 28) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=当たり！！%0Aもう一度引き、出た結果をいっしーとともにやる';
+	}; if(rand > 38) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=ん～～～にゃ～～！！%0A1週間猫化するにゃ～～';
+	}; if(rand > 48) {
+		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は1週間メイド化です。がんばってくださいませ。';
+	}; if(rand > 73) {
+		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=今月は1週間お嬢様化ですわ！がんばれなのですわ！';
+	}; if(rand > 98) {
+    		location='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftsuonihamu.github.io%2Ftikuwa%2F&text=...大変申し上げづらいのですが、%0Aなんと365日間メスガキ化を%0A引いてしまったようです...%0A...ドンマイ()';
+      	};
+}
+
 </script>
-</head>
-  
-<body>
-<center>
-<header><h1>ランダム選曲</h1>
-</header>
+  </head>
 
-<main>
-  
-  <select class= "list" id="list" name="list" onclick="viewChange()"><br>
-        <option value="オンゲキ">オンゲキ
-        <option value="チュウニズム">チュウニズム
-        <option value="maimai">maimai
-  </select>
-  <p>定数最大値
-  <input type="search" name="conmax" id="conmax" required="required" list ="request"/></p>
-  <p>定数最小値
-  <input type="search" name="conmim" id="conmin" required="required" list ="request"/></p>
-      <datalist id="request">
-        <option value="0">
-        <option value="13.0">
-        <option value="13.1">
-        <option value="13.2">
-        <option value="13.3">
-        <option value="13.4">
-        <option value="13.5">
-        <option value="13.6">
-        <option value="13.7">
-        <option value="13.8">
-        <option value="13.9">
-        <option value="14.0">
-        <option value="14.1">
-        <option value="14.2">
-        <option value="14.3">
-        <option value="14.4">
-        <option value="14.5">
-        <option value="14.6">
-        <option value="14.7">
-        <option value="14.8">
-        <option value="14.9">
-        <option value="15.0">
-        <option value="15.1">
-        <option value="15.2">
-        <option value="15.3">
-        <option value="15.4">
-        <option value="15.6">
-        <option value="15.7">
-      </datalist>
-  
-  <button type="button" id="btn" onclick="buttonClick()">送信する</button>
+  <body>
+    <div class="header">
+	<center>
+		<script type="text/javascript">
+			var g15b = 'Recollect lines';
+			var g15a = ['Apollo','LAMIA'];
 
-</main>
-</center>
+			var arr = [];
+			var arr = arr.concat(g15b);
+			var arr = arr.concat(g15a);
+			
+			var rand = Math.floor( Math.random() * arr.length);
+			document.write(arr[rand]);
+		</script>
+	</center>
+    </div>
+
+   <center>
+	   <div class="main">
+		   <button class="btn" onclick="random()">毎月1日の朝に押してね♡</button>
+	  </div>
+   </center>
+  
+
 
 </body>
 </html>

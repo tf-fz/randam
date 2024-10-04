@@ -1,4 +1,5 @@
 let select = document.querySelector('[name="list"]');
+let conmax = document.getElementById('conmax');
 let sm =["f0"];
 let game ;
 function viewChange(){

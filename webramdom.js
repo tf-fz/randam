@@ -1,4 +1,5 @@
-document.getElementById("button").onclick = function() {
+window.onload = viewChange;
+document.getElementById("button").onclick = function button() {
 	document.write(select);
 	document.write(game);
 	document.write(conmax);

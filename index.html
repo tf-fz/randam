@@ -44,7 +44,7 @@
 <script type="text/javascript">
 let a = 0;
 let result = "ﾃｽﾄ";
-let select = document.getElementById('player1');
+let select = document.getElementById('player');
 select.onchange = function(){
 	if (this.value == 'オンゲキ'){
 		  a = 1;
@@ -54,6 +54,19 @@ select.onchange = function(){
 		  a = 3;
           }
 }
+function viewChange(){
+	if (document.getElementById('player')){
+          if (select.value == 'オンゲキ'){
+            sm.push("f1","f2");
+          }else if (select.value == 'チュウニズム'){
+            sm.push("ua1","uc1");
+          }else if (select.value == 'maimai'){
+            sm.push("ub1","uc1");
+          }
+        }
+	window.onload = viewChange;
+}
+	
 function randa() {
 	
 	rand = Math.floor(Math.random()*5);
@@ -134,7 +147,7 @@ function random() {
 
    <center>
 	   <div class="main">
-		   <select class= "banedselect" id="player" name="player1" onchange="viewChange();">
+		   <select class= "banedselect" id="player" name="player" onchange="viewChange();">
           <option value="オンゲキ">オンゲキ</option>
           <option value="チュウニズム">チュウニズム</option>
           <option value="maimai">maimai</option>
